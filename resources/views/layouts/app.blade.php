@@ -22,7 +22,7 @@
         <div class="bg-white px-10 py-4 flex flex-col gap-3 w-[450px]"
             style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
             <div class="w-full flex justify-center py-3">
-                <h1 class="font-[800] text-3xl">LOGO</h1>
+                <h1 class="font-[800] text-3xl">BAMANA</h1>
             </div>
             @yield('content')
         </div>

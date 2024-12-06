@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ViewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,15 +29,30 @@ Route::middleware(['AuthFirewall'])->group(function () {
     */
 
 Route::middleware(['roleCheck:admin,customer'])->group(function () {
-    Route::get('/',                                              [ViewsController::class, 'index'])->name('view.landing');
+    Route::get('/',                          [ViewsController::class, 'index'])->name('view.landing');
+    Route::get('/auth-logout',               [AuthController::class, 'logout'])->name('auth.logout');
 });
 
-// Route::get('/auth-logout-customer',               [UserController::class, 'logout'])->name('auth.customer.logout');
 
-// Route::middleware(['admin'])->group(function () {
-//     // Route::get('/auth-logout-admin',         [UserController::class, 'logout'])->name('auth.admin.logout');
-//     // Route::get('/dashboard',                 [ViewsController::class, 'dashboard'])->name('view.dashboard');
-// });
+// Route pour afficher le formulaire de création d'un produit (create)
+Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+
+// Route pour enregistrer un produit dans la base de données (store)
+Route::post('products', [ProductController::class, 'store'])->name('products.store');
+
+// Route pour afficher le formulaire d'édition d'un produit (edit)
+Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+
+// Route pour mettre à jour un produit (update)
+Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
+
+// Route pour supprimer un produit (destroy)
+Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+
+Route::middleware(['roleCheck:admin'])->group(function () {
+
+});
 
 /*
     |--------------------------------------------------------------------------

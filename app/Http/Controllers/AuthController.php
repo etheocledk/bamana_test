@@ -45,12 +45,20 @@ class AuthController extends Controller
         try {
             if (Auth::attempt($credentials, $remember)) {
                 $request->session()->regenerate();
-                redirect()->route('view.landing');
+                return redirect()->route('view.landing');
             } else {
                 return redirect()->back()->with('error', 'Identifiants invalides.');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur est survenue lors de la connexion.');
         }
+    }
+
+    public function logout()
+    {
+        request()->session()->invalidate();
+        request()->session()->regenerate();
+        Auth::logout();
+        return redirect()->route('auth.login');
     }
 }

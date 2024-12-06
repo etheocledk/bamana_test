@@ -63,14 +63,12 @@ button:disabled,
 
 button:active,
 .btn:active {
-    background-color: #008559;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 button:focus,
 .btn:focus {
     outline: none;
-    /* box-shadow: 0 0 0 2px var(--button-bg-color-hover); */
 }
 
 ::-webkit-scrollbar {

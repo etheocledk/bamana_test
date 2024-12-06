@@ -19,6 +19,6 @@ class RoleCheck
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect('/auth-login');
     }
 }
