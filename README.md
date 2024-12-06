@@ -39,13 +39,14 @@ cp .env.example .env
 
 -Crée une base de données MySQL pour le projet (par exemple, test_bamana).
 -Ouvre le fichier .env et mets à jour les informations de connexion à la base de données :
-
+```bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=test_bamana  # Remplace par le nom de ta base de données
 DB_USERNAME=root  # Ton nom d'utilisateur MySQL
 DB_PASSWORD=        # Laisse vide si tu n'as pas de mot de passe pour MySQL
+```
 
 ### 4. Générer la clé d'application
 
