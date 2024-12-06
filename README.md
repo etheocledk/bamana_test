@@ -1,12 +1,12 @@
-# Projet Laravel 10 - TEST BAMANA
+# Projet Laravel - TEST BAMANA
 
-Bienvenue dans le projet Laravel 10 ! Ce projet inclut un système simple de CRUD pour gérer des produits avec des fonctionnalités d'ajout, de modification, de suppression et de filtrage.
+Bienvenue dans le projet Laravel ! Ce projet inclut un système simple de CRUD pour gérer des produits avec des fonctionnalités d'ajout, de modification, de suppression et de filtrage.
 
 ## Capture d'écran
 
 Voici une capture d'écran de l'application en cours d'exécution :
 
-![Capture d'écran du projet](assets/images/screenshot.png)
+![Capture d'écran du projet](public/assets/images/screenshot.png)
 
 ## Prérequis
 
@@ -79,7 +79,7 @@ Une fois le serveur démarré, ouvre ton navigateur et accède à l'application 
 http://127.0.0.1:8000
 ```
 
-###8. Connexion à l'interface utilisateur
+### 8. Connexion à l'interface utilisateur
 
 Utilisateur : Un utilisateur peut naviguer dans les produits et les afficher. Il peut aussi filtrer les produits par nom.
 Admin : L'administrateur peut ajouter, modifier et supprimer des produits.Il peut aussi filtrer les produits par nom.
