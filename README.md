@@ -1,6 +1,6 @@
-# Projet Laravel 10 - TEST BAMANA
+# Projet Laravel - TEST BAMANA
 
-Bienvenue dans le projet Laravel 10 ! Ce projet inclut un système simple de CRUD pour gérer des produits avec des fonctionnalités d'ajout, de modification, de suppression et de filtrage.
+Bienvenue dans le projet Laravel ! Ce projet inclut un système simple de CRUD pour gérer des produits avec des fonctionnalités d'ajout, de modification, de suppression et de filtrage.
 
 ## Capture d'écran
 
