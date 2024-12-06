@@ -6,7 +6,7 @@ Bienvenue dans le projet Laravel 10 ! Ce projet inclut un système simple de CRU
 
 Voici une capture d'écran de l'application en cours d'exécution :
 
-![Capture d'écran du projet](assets/images/screenshot.png)
+![Capture d'écran du projet](public/assets/images/screenshot.png)
 
 ## Prérequis
 
