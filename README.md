@@ -17,8 +17,8 @@ Avant de commencer, voici les outils et logiciels nécessaires :
 Commence par cloner ce projet sur ton ordinateur en utilisant Git. Ouvre un terminal et exécute les commandes suivantes :
 
 ```bash
-git clone https://github.com/ton-utilisateur/ton-repository.git
-cd ton-repository
+git clone https://github.com/etheocledk/bamana_test.git
+cd bamana_test
 composer install
 ```
 ### 2. Créer le fichier .env
