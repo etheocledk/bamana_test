@@ -31,15 +31,15 @@ Route::middleware(['AuthFirewall'])->group(function () {
     */
 
 Route::middleware(['customer'])->group(function () {
-    Route::get('/auth-logout-customer',               [UserController::class, 'logout'])->name('auth.customer.logout');
-    Route::get('/historique-orders-clients',          [ViewsController::class, 'clientOrdersHistory'])->name('transactions.history');
-    Route::get('/account',                            [ViewsController::class, 'account'])->name('views.account');
-    Route::get('/order-show/{id}',                    [ViewsController::class, 'orderDetails'])->name('views.orders.show');
+    // Route::get('/auth-logout-customer',               [UserController::class, 'logout'])->name('auth.customer.logout');
+    // Route::get('/historique-orders-clients',          [ViewsController::class, 'clientOrdersHistory'])->name('transactions.history');
+    // Route::get('/account',                            [ViewsController::class, 'account'])->name('views.account');
+    // Route::get('/order-show/{id}',                    [ViewsController::class, 'orderDetails'])->name('views.orders.show');
 
-    Route::post('/auth-reset-customer-avatar-store',        [UserController::class, 'resetUserAvatar'])->name('auth.reset.customer.avatar.store');
-    Route::post('/auth-reset-customer-informations-store',  [UserController::class, 'resetUserInformations'])->name('auth.reset.customer.informations.store');
-    Route::post('/auth-reset-customer-password-store',      [UserController::class, 'resetUserPassword'])->name('auth.reset.customer.password.store');
-    Route::post('/auth-delete-customer-acount-store',       [UserController::class, 'deleteAccount'])->name('auth.delete.customer.account.store');
+    // Route::post('/auth-reset-customer-avatar-store',        [UserController::class, 'resetUserAvatar'])->name('auth.reset.customer.avatar.store');
+    // Route::post('/auth-reset-customer-informations-store',  [UserController::class, 'resetUserInformations'])->name('auth.reset.customer.informations.store');
+    // Route::post('/auth-reset-customer-password-store',      [UserController::class, 'resetUserPassword'])->name('auth.reset.customer.password.store');
+    // Route::post('/auth-delete-customer-acount-store',       [UserController::class, 'deleteAccount'])->name('auth.delete.customer.account.store');
 });
 
 
