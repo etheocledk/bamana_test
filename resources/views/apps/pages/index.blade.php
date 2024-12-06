@@ -104,8 +104,8 @@
 
     <!-- Modal d'ajout de produit -->
     <div id="addProductModal"
-        class="fixed inset-0  bg-black/60 z-[999] flex h-full w-full bg-opacity-50 hidden justify-center items-center">
-        <div class="bg-white p-6 rounded-lg w-1/3">
+        class="fixed inset-0 bg-black/60 z-[999] flex h-full w-full bg-opacity-50 hidden justify-center items-center">
+        <div class="bg-white p-6 rounded-lg lg:w-1/3 md:2/4 sm:3/4">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-xl font-semibold">Ajouter un produit</h3>
                 <button class="text-gray-500" onclick="closeModal()">&times;</button>
