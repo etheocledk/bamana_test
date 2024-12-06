@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ViewsController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/',                                              [ViewsController::class, 'index'])->name('view.landing');
 /*
     |--------------------------------------------------------------------------
     | Public Route
@@ -15,10 +13,9 @@ Route::get('/',                                              [ViewsController::c
     |
     */
 
-
 Route::middleware(['AuthFirewall'])->group(function () {
-    // Route::get('/auth-login',                               [ViewsController::class, 'login'])->name('auth.login');
-    // Route::post('/auth-login-store',                        [UserController::class, 'loginStore'])->name('auth.login.store');
+    Route::get('/auth-login',                               [ViewsController::class, 'login'])->name('auth.login');
+    Route::post('/auth-login-store',                        [AuthController::class, 'loginStore'])->name('auth.login.store');
 });
 
 /*
@@ -30,23 +27,16 @@ Route::middleware(['AuthFirewall'])->group(function () {
     |
     */
 
-Route::middleware(['customer'])->group(function () {
-    // Route::get('/auth-logout-customer',               [UserController::class, 'logout'])->name('auth.customer.logout');
-    // Route::get('/historique-orders-clients',          [ViewsController::class, 'clientOrdersHistory'])->name('transactions.history');
-    // Route::get('/account',                            [ViewsController::class, 'account'])->name('views.account');
-    // Route::get('/order-show/{id}',                    [ViewsController::class, 'orderDetails'])->name('views.orders.show');
-
-    // Route::post('/auth-reset-customer-avatar-store',        [UserController::class, 'resetUserAvatar'])->name('auth.reset.customer.avatar.store');
-    // Route::post('/auth-reset-customer-informations-store',  [UserController::class, 'resetUserInformations'])->name('auth.reset.customer.informations.store');
-    // Route::post('/auth-reset-customer-password-store',      [UserController::class, 'resetUserPassword'])->name('auth.reset.customer.password.store');
-    // Route::post('/auth-delete-customer-acount-store',       [UserController::class, 'deleteAccount'])->name('auth.delete.customer.account.store');
+Route::middleware(['roleCheck:admin,customer'])->group(function () {
+    Route::get('/',                                              [ViewsController::class, 'index'])->name('view.landing');
 });
 
+// Route::get('/auth-logout-customer',               [UserController::class, 'logout'])->name('auth.customer.logout');
 
-Route::middleware(['admin'])->group(function () {
-    // Route::get('/auth-logout-admin',         [UserController::class, 'logout'])->name('auth.admin.logout');
-    // Route::get('/dashboard',                 [ViewsController::class, 'dashboard'])->name('view.dashboard');
-});
+// Route::middleware(['admin'])->group(function () {
+//     // Route::get('/auth-logout-admin',         [UserController::class, 'logout'])->name('auth.admin.logout');
+//     // Route::get('/dashboard',                 [ViewsController::class, 'dashboard'])->name('view.dashboard');
+// });
 
 /*
     |--------------------------------------------------------------------------
@@ -57,7 +47,6 @@ Route::middleware(['admin'])->group(function () {
     | This route is used to display a custom 404 error page for unknown routes.
     |
     */
-
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 });

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Connexion')
 @section('content')
-    <form class="flex flex-col gap-[12px]" action="{{ route('auth.login.store') }}" method="POST">
+    <form class="flex flex-col gap-[12px] py-2" action="{{ route('auth.login.store') }}" method="POST">
         <div class="flex flex-col gap-3">
             <h4 class="text-[16px] font-[600]">Bienvenue 👋🏻! </h4>
             <p class="text-[15px]">Veuillez vous connecter à votre compte et commencer l'aventure.</p>
@@ -15,12 +15,6 @@
                 </div>
             </div>
             <div>
-                <div class="flex justify-between items-center">
-                    <label class="text-sm" for="password">Mot de Passe</label>
-                    <a href="{{ route('auth.forgot.password') }}" class="text-[#003169] text-sm">
-                        Mot de passe oublié ?
-                    </a>
-                </div>
                 <div class="mt-1">
                     <input type="password" name="password" id="password-login"
                         class="block w-full h-[40px] rounded-md border-0 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50 focus:outline-none focus:shadow-sm"
@@ -42,8 +36,4 @@
         </div>
         <button type="submit" class="btn text-[16px] font-[600]">Se connecter</button>
     </form>
-    <p class="text-center text-[15px] mt-2 mb-3">Nouveau sur notre plateforme ? <a href="{{ url('auth-register') }}"
-            class="text-[15px] text-[#003169] hover:underline font-[600]">Inscrivez-vous.</href=>
-    </p>
-    </div>
 @endsection

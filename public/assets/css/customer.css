@@ -1,0 +1,133 @@
+:root {
+    --button-bg-color: #003169;
+    --button-bg-color-hover: #005278;
+    --button-text-color: #ffffff;
+    --button-border-radius: 4px;
+    --button-padding: 8px 20px;
+    --button-font-size: 16px;
+    --button-disabled-bg-color: #cccccc;
+    --button-disabled-text-color: #666666;
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    position: relative;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #f3f2f2;
+}
+
+a,
+a:active,
+a:hover {
+    text-decoration: none;
+}
+
+p {
+    font-size: 16px;
+}
+
+
+button,
+.btn {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+.btn:hover {
+    background-color: var(--button-bg-color-hover);
+}
+
+button:disabled,
+.btn:disabled {
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
+    cursor: not-allowed;
+}
+
+button:focus,
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--button-bg-color-hover);
+}
+
+::-webkit-scrollbar {
+    width: 8px; 
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background:  var(--button-bg-color-hover); 
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--button-bg-color-hover);
+}
+
+::-webkit-scrollbar-horizontal {
+    height: 12px; 
+}
+
+
+.logout-btn {
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-weight: 500;
+}
+
+.logout-btn:hover{
+    color: white;
+    background-color: red;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.text-center {
+    text-align: center;
+}

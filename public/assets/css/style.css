@@ -1,0 +1,2388 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "Poppins-Regular";
+    src: url(../fonts/static/Poppins-Regular.ttf) format(truetype);
+}
+
+:root {
+    --color-white: #ffffff;
+    --color-light: #f0eef6;
+    --background-color: #ffffff;
+    --background-sidebar: #0e4580;
+    --color-secondary: #d6ccff;
+    --color-gray: #9e98b3;
+    --color-blue: #0084fc;
+    --color-violet: #3a5ad7;
+    --color-rose: #e55e82;
+    --color-bleu-light: #39bafc;
+    --color-primary: #6b4ce6;
+    --color-succes: #50d850;
+    --color-danger: #d84343;
+    --color-dark: #241e38;
+    --color-black: #151221;
+    --color-seperator-line: rgb(116, 115, 115);
+    --primary-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    --secondary-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+    --color-warning: rgb(230, 171, 62);
+}
+
+* {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 5;
+    font-size: 14px;
+    color: black;
+    font-family: "Poppins-Regular";
+}
+
+body {
+    overflow: hidden;
+    background-color: var(--color-white);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+/* ul li {
+    list-style: none;
+} */
+
+select,
+button,
+input,
+a.btn {
+    outline: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.main-container {
+    padding: 40px 25px;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-gray);
+}
+
+a.btn,
+button {
+    color: var(--color-dark);
+    padding: 10px;
+    border: 1px solid var(--color-dark);
+    border-radius: 5px;
+    font-weight: 800;
+}
+
+button {
+    cursor: pointer;
+}
+
+a.btn span,
+button span {
+    color: inherit;
+    font-weight: inherit;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+a.btn:hover,
+a.btn:focus,
+button:hover,
+button:focus {
+    color: var(--color-white);
+}
+
+a.btn:hover::before,
+button:hover::before {
+    content: "";
+    position: absolute;
+    background-color: var(--color-dark);
+    width: 100;
+}
+
+.content {
+    display: flex;
+}
+
+.content__left {
+    background-color: var(--background-sidebar);
+    height: 100vh;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 80px;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.sidebar.active {
+    width: 230px;
+}
+
+.sidebar__top {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    margin-top: 25px;
+}
+
+.sidebar__top__logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.sidebar__logo {
+    padding-left: 15px;
+    transition: 0.4s;
+    width: 150px;
+    height: 100px;
+    margin-top: -20px;
+}
+
+.sidebar__logo.active {
+    padding-left: 20px;
+}
+
+.sidebar__menu__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 15px;
+}
+
+.sidebar__list__item.active {
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    background-color: var(--background-color);
+}
+
+.sidebar__list__item.active::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-bottom-right-radius: 15px;
+    box-shadow: 5px 5px 0 5px var(--background-color);
+    background-color: transparent;
+}
+
+.sidebar__list__item.active::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-top-right-radius: 15px;
+    box-shadow: 5px -5px 0 5px var(--background-color);
+    background-color: transparent;
+}
+
+.sidebar__list__item a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar__list__item.active a p {
+    color: black;
+}
+
+.sidebar__menu__logo {
+    min-width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.sidebar__menu__logo span {
+    font-size: 1.4rem;
+    color: var(--color-white);
+}
+
+.sidebar__menu__logo.active span {
+    background-color: var(--color-black);
+    min-width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar__menu__list a p {
+    font-size: 1rem;
+    color: var(--color-white);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    padding-right: 15px;
+    transition: 0.5s;
+}
+
+.sidebar__day__date {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.sidebar__day__date.active {
+    flex-direction: row;
+    padding-left: 30px;
+}
+
+.sidebar__day__date p {
+    color: var(--color-gray);
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: pre-wrap;
+}
+
+.content__right {
+    width: calc(100% - 80px);
+    background-color: var(--background-color);
+    transition: 0.5s;
+}
+
+.content__right.active {
+    width: calc(100% - 230px);
+}
+
+.navbar__left {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar__left span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    position: absolute;
+    background-color: var(--color-black);
+}
+
+.navbar__left span::after,
+.navbar__left span::before {
+    content: "";
+    width: 30px;
+    height: 3px;
+    position: absolute;
+    background-color: var(--color-black);
+}
+
+.navbar__left span::after {
+    transform: translateY(-8px);
+}
+
+.navbar__left span::before {
+    transform: translateY(8px);
+}
+
+.navbar__left.active span {
+    visibility: hidden;
+}
+
+.navbar__left.active span::after {
+    transform: translateY(0px) rotate(45deg);
+    visibility: visible;
+}
+
+.navbar__left.active span::before {
+    transform: translateY(0px) rotate(-45deg);
+    visibility: visible;
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    z-index: 0;
+}
+
+.navbar__right,
+.user a {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__right {
+    gap: 15px;
+}
+
+header {
+    box-shadow: var(--primary-box-shadow);
+    width: 100%;
+}
+
+.navbar__right__notification__icone {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    background-color: var(--color-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span.mdi-bell {
+    font-size: 22px;
+    color: var(--color-white);
+}
+
+.navbar__right__seperator {
+    display: block;
+    height: 45px;
+    border-left: 3px solid var(--color-seperator-line);
+}
+
+main {
+    overflow: scroll;
+    height: 100vh;
+    z-index: -1;
+}
+
+main::-webkit-scrollbar {
+    width: 8px;
+}
+
+main::-webkit-scrollbar-thumb {
+    background-color: var(--background-sidebar);
+    border-radius: 35px;
+}
+
+.logout-btn {
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-weight: 500;
+}
+
+.logout-btn:hover {
+    color: var(--color-white);
+    background-color: red;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.user-list img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.user-link {
+    margin-left: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-subhead {
+    display: block;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.label {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: #fff;
+}
+
+.label-default {
+    background-color: #777;
+}
+
+.label-success {
+    background-color: #5cb85c;
+}
+
+.label-danger {
+    background-color: #d9534f;
+}
+
+.label-warning {
+    background-color: #f0ad4e;
+}
+
+.table-link {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.table-link:hover {
+    color: #000;
+}
+
+.table-link.danger {
+    color: #d9534f;
+}
+
+.fa-stack {
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    vertical-align: middle;
+}
+
+.fa-square,
+.fa-search-plus,
+.fa-pencil,
+.fa-trash-o {
+    font-size: 1.2em;
+}
+
+.fa-inverse {
+    color: #fff;
+}
+
+/* card style */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col {
+    flex: 1;
+    min-width: 250px;
+    max-width: calc(25% - 20px);
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%),
+        0 2px 6px 0 rgb(206 206 238 / 54%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.ms-auto {
+    margin-left: auto;
+}
+
+.widgets-icons-2 {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ededed;
+    font-size: 27px;
+    border-radius: 50%;
+}
+
+.widgets-icons-2 i {
+    font-size: 30px;
+}
+
+.text-secondary {
+    color: #6c757d;
+}
+
+.font-13 {
+    font-size: 13px;
+}
+
+.text-info {
+    color: #0dcaf0;
+}
+
+.text-danger {
+    color: #fd3550;
+}
+
+.text-success {
+    color: #15ca20;
+}
+
+.text-warning {
+    color: #ffc107;
+}
+
+.radius-10 {
+    border-radius: 10px;
+}
+
+.border-info {
+    border-left: 5px solid #0dcaf0;
+}
+
+.border-danger {
+    border-left: 5px solid #fd3550;
+}
+
+.border-success {
+    border-left: 5px solid #15ca20;
+}
+
+.border-warning {
+    border-left: 5px solid #ffc107;
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-scooter {
+    background: linear-gradient(45deg, #17ead9, #6078ea);
+}
+
+.bg-gradient-bloody {
+    background: linear-gradient(45deg, #f54ea2, #ff7676);
+}
+
+.bg-gradient-ohhappiness {
+    background: linear-gradient(45deg, #00b09b, #96c93d);
+}
+
+.bg-gradient-blooker {
+    background: linear-gradient(45deg, #ffdf40, #ff8359);
+}
+
+/* custom pagination */
+
+.page-item:first-child .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:first-child .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:first-child .page-link,
+.page-item:first-child .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:first-child a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:first-child a,
+.page-item:first-child .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:first-child a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:first-child a {
+    margin-left: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.page-item:last-child .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:last-child .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:last-child .page-link,
+.page-item:last-child .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:last-child a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:last-child a,
+.page-item:last-child .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:last-child a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:last-child a {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.page-item.active .page-link,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button .page-link,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item.active a,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-item.active a,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-page a {
+    z-index: 3;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.page-item.disabled .page-link,
+.jsgrid .jsgrid-pager .disabled.jsgrid-pager-nav-button .page-link,
+.jsgrid .jsgrid-pager .disabled.jsgrid-pager-page .page-link,
+.page-item.disabled .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item.disabled a,
+.jsgrid .jsgrid-pager .disabled.jsgrid-pager-nav-button a,
+.page-item.disabled .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-item.disabled a,
+.jsgrid .jsgrid-pager .disabled.jsgrid-pager-page a {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.pagination-lg .page-link,
+.pagination-lg .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .pagination-lg a,
+.pagination-lg .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-lg a {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.pagination-lg .page-item:first-child .page-link,
+.pagination-lg
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-lg
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.pagination-lg .jsgrid .jsgrid-pager .jsgrid-pager-page:first-child .page-link,
+.jsgrid .jsgrid-pager .pagination-lg .jsgrid-pager-page:first-child .page-link,
+.pagination-lg
+    .page-item:first-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-lg
+    .page-item:first-child
+    a,
+.pagination-lg .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:first-child a,
+.jsgrid .jsgrid-pager .pagination-lg .jsgrid-pager-nav-button:first-child a,
+.pagination-lg
+    .page-item:first-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination-lg
+    .page-item:first-child
+    a,
+.pagination-lg .jsgrid .jsgrid-pager .jsgrid-pager-page:first-child a,
+.jsgrid .jsgrid-pager .pagination-lg .jsgrid-pager-page:first-child a {
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+
+.pagination-lg .page-item:last-child .page-link,
+.pagination-lg
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-lg
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.pagination-lg .jsgrid .jsgrid-pager .jsgrid-pager-page:last-child .page-link,
+.jsgrid .jsgrid-pager .pagination-lg .jsgrid-pager-page:last-child .page-link,
+.pagination-lg
+    .page-item:last-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-lg
+    .page-item:last-child
+    a,
+.pagination-lg .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:last-child a,
+.jsgrid .jsgrid-pager .pagination-lg .jsgrid-pager-nav-button:last-child a,
+.pagination-lg .page-item:last-child .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-lg .page-item:last-child a,
+.pagination-lg .jsgrid .jsgrid-pager .jsgrid-pager-page:last-child a,
+.jsgrid .jsgrid-pager .pagination-lg .jsgrid-pager-page:last-child a {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+
+.pagination-sm .page-link,
+.pagination-sm .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .pagination-sm a,
+.pagination-sm .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-sm a {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.pagination-sm .page-item:first-child .page-link,
+.pagination-sm
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-sm
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.pagination-sm .jsgrid .jsgrid-pager .jsgrid-pager-page:first-child .page-link,
+.jsgrid .jsgrid-pager .pagination-sm .jsgrid-pager-page:first-child .page-link,
+.pagination-sm
+    .page-item:first-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-sm
+    .page-item:first-child
+    a,
+.pagination-sm .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:first-child a,
+.jsgrid .jsgrid-pager .pagination-sm .jsgrid-pager-nav-button:first-child a,
+.pagination-sm
+    .page-item:first-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination-sm
+    .page-item:first-child
+    a,
+.pagination-sm .jsgrid .jsgrid-pager .jsgrid-pager-page:first-child a,
+.jsgrid .jsgrid-pager .pagination-sm .jsgrid-pager-page:first-child a {
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+}
+
+.pagination-sm .page-item:last-child .page-link,
+.pagination-sm
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-sm
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.pagination-sm .jsgrid .jsgrid-pager .jsgrid-pager-page:last-child .page-link,
+.jsgrid .jsgrid-pager .pagination-sm .jsgrid-pager-page:last-child .page-link,
+.pagination-sm
+    .page-item:last-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-sm
+    .page-item:last-child
+    a,
+.pagination-sm .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:last-child a,
+.jsgrid .jsgrid-pager .pagination-sm .jsgrid-pager-nav-button:last-child a,
+.pagination-sm .page-item:last-child .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-sm .page-item:last-child a,
+.pagination-sm .jsgrid .jsgrid-pager .jsgrid-pager-page:last-child a,
+.jsgrid .jsgrid-pager .pagination-sm .jsgrid-pager-page:last-child a {
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+}
+
+.pagination .page-item .page-link,
+.jsgrid .jsgrid-pager .page-item .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page a {
+    border-color: #ced4da;
+    color: #000000;
+    font-size: 0.875rem;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.pagination .page-item .page-link:focus,
+.jsgrid .jsgrid-pager .page-item .page-link:focus,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-link:focus,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-link:focus,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button a:focus,
+.jsgrid .jsgrid-pager .jsgrid-pager-page a:focus {
+    background: inherit;
+}
+
+.pagination .page-item .page-link i:before,
+.jsgrid .jsgrid-pager .page-item .page-link i:before,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-link i:before,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-link i:before,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button a i:before,
+.jsgrid .jsgrid-pager .jsgrid-pager-page a i:before {
+    font-size: inherit;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.pagination .page-item.active .page-link,
+.jsgrid .jsgrid-pager .page-item.active .page-link,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button .page-link,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.pagination .page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .page-item.active .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item.active a,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.pagination .page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .page-item.active .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-item.active a,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.pagination .page-item:hover .page-link,
+.jsgrid .jsgrid-pager .page-item:hover .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.pagination .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .page-item:hover .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:hover a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.pagination .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .page-item:hover .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:hover a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.pagination .page-item:focus .page-link,
+.jsgrid .jsgrid-pager .page-item:focus .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:focus .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:focus .page-link,
+.pagination .page-item:focus .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .page-item:focus .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:focus a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:focus a,
+.pagination .page-item:focus .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .page-item:focus .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:focus a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:focus a,
+.pagination .page-item:active .page-link,
+.jsgrid .jsgrid-pager .page-item:active .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:active .page-link,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:active .page-link,
+.pagination .page-item:active .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .page-item:active .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:active a,
+.jsgrid .jsgrid-pager .jsgrid-pager-nav-button:active a,
+.pagination .page-item:active .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .page-item:active .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:active a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page:active a {
+    background: #004200;
+    border-color: #004200;
+    color: #ffffff;
+}
+
+.pagination.pagination-flat .page-item,
+.jsgrid .pagination-flat.jsgrid-pager .page-item,
+.pagination.pagination-flat .jsgrid .jsgrid-pager .jsgrid-pager-nav-button,
+.jsgrid .jsgrid-pager .pagination.pagination-flat .jsgrid-pager-nav-button,
+.jsgrid .pagination-flat.jsgrid-pager .jsgrid-pager-nav-button,
+.pagination.pagination-flat .jsgrid .jsgrid-pager .jsgrid-pager-page,
+.jsgrid .jsgrid-pager .pagination.pagination-flat .jsgrid-pager-page,
+.jsgrid .pagination-flat.jsgrid-pager .jsgrid-pager-page {
+    margin: 0 0.25rem;
+}
+
+.pagination.pagination-flat .page-item .page-link,
+.jsgrid .pagination-flat.jsgrid-pager .page-item .page-link,
+.pagination.pagination-flat
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-flat
+    .jsgrid-pager-nav-button
+    .page-link,
+.jsgrid .pagination-flat.jsgrid-pager .jsgrid-pager-nav-button .page-link,
+.pagination.pagination-flat .jsgrid .jsgrid-pager .jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .pagination.pagination-flat .jsgrid-pager-page .page-link,
+.jsgrid .pagination-flat.jsgrid-pager .jsgrid-pager-page .page-link,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination.pagination-flat
+    .page-item
+    a,
+.pagination.pagination-flat .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination.pagination-flat .jsgrid-pager-nav-button a,
+.jsgrid .pagination-flat.jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination.pagination-flat
+    .page-item
+    a,
+.pagination.pagination-flat .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination.pagination-flat .jsgrid-pager-page a,
+.jsgrid .pagination-flat.jsgrid-pager .jsgrid-pager-page a {
+    border: none;
+    border-radius: 2px;
+}
+
+.pagination.pagination-separated .page-item,
+.jsgrid .pagination-separated.jsgrid-pager .page-item,
+.pagination.pagination-separated .jsgrid .jsgrid-pager .jsgrid-pager-nav-button,
+.jsgrid .jsgrid-pager .pagination.pagination-separated .jsgrid-pager-nav-button,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-nav-button,
+.pagination.pagination-separated .jsgrid .jsgrid-pager .jsgrid-pager-page,
+.jsgrid .jsgrid-pager .pagination.pagination-separated .jsgrid-pager-page,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-page {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.pagination.pagination-separated .page-item:first-child,
+.jsgrid .pagination-separated.jsgrid-pager .page-item:first-child,
+.pagination.pagination-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:first-child,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-separated
+    .jsgrid-pager-nav-button:first-child,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-nav-button:first-child,
+.pagination.pagination-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:first-child,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-separated
+    .jsgrid-pager-page:first-child,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-page:first-child {
+    margin-left: 0;
+}
+
+.pagination.pagination-separated .page-item:last-child,
+.jsgrid .pagination-separated.jsgrid-pager .page-item:last-child,
+.pagination.pagination-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:last-child,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-separated
+    .jsgrid-pager-nav-button:last-child,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-nav-button:last-child,
+.pagination.pagination-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:last-child,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-separated
+    .jsgrid-pager-page:last-child,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-page:last-child {
+    margin-right: 0;
+}
+
+.pagination.pagination-separated .page-item .page-link,
+.jsgrid .pagination-separated.jsgrid-pager .page-item .page-link,
+.pagination.pagination-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-separated
+    .jsgrid-pager-nav-button
+    .page-link,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-nav-button .page-link,
+.pagination.pagination-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-separated
+    .jsgrid-pager-page
+    .page-link,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-page .page-link,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination.pagination-separated
+    .page-item
+    a,
+.pagination.pagination-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-separated
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination.pagination-separated
+    .page-item
+    a,
+.pagination.pagination-separated .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination.pagination-separated .jsgrid-pager-page a,
+.jsgrid .pagination-separated.jsgrid-pager .jsgrid-pager-page a {
+    border-radius: 2px;
+}
+
+.pagination.pagination-rounded .page-item:first-child .page-link,
+.jsgrid .pagination-rounded.jsgrid-pager .page-item:first-child .page-link,
+.pagination.pagination-rounded
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.pagination.pagination-rounded
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:first-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded
+    .jsgrid-pager-page:first-child
+    .page-link,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .jsgrid-pager-page:first-child
+    .page-link,
+.pagination.pagination-rounded
+    .page-item:first-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination.pagination-rounded
+    .page-item:first-child
+    a,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .page-item:first-child
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-item:first-child
+    a,
+.pagination.pagination-rounded
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded
+    .jsgrid-pager-nav-button:first-child
+    a,
+.jsgrid .pagination-rounded.jsgrid-pager .jsgrid-pager-nav-button:first-child a,
+.pagination.pagination-rounded
+    .page-item:first-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination.pagination-rounded
+    .page-item:first-child
+    a,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .page-item:first-child
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .jsgrid-pager-page
+    .page-item:first-child
+    a,
+.pagination.pagination-rounded
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:first-child
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded
+    .jsgrid-pager-page:first-child
+    a,
+.jsgrid .pagination-rounded.jsgrid-pager .jsgrid-pager-page:first-child a {
+    border-radius: 25px 0 0 25px;
+}
+
+.pagination.pagination-rounded .page-item:last-child .page-link,
+.jsgrid .pagination-rounded.jsgrid-pager .page-item:last-child .page-link,
+.pagination.pagination-rounded
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.pagination.pagination-rounded
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:last-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded
+    .jsgrid-pager-page:last-child
+    .page-link,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .jsgrid-pager-page:last-child
+    .page-link,
+.pagination.pagination-rounded
+    .page-item:last-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination.pagination-rounded
+    .page-item:last-child
+    a,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .page-item:last-child
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-item:last-child
+    a,
+.pagination.pagination-rounded
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded
+    .jsgrid-pager-nav-button:last-child
+    a,
+.jsgrid .pagination-rounded.jsgrid-pager .jsgrid-pager-nav-button:last-child a,
+.pagination.pagination-rounded
+    .page-item:last-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination.pagination-rounded
+    .page-item:last-child
+    a,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .page-item:last-child
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .pagination-rounded.jsgrid-pager
+    .jsgrid-pager-page
+    .page-item:last-child
+    a,
+.pagination.pagination-rounded
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:last-child
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded
+    .jsgrid-pager-page:last-child
+    a,
+.jsgrid .pagination-rounded.jsgrid-pager .jsgrid-pager-page:last-child a {
+    border-radius: 0 25px 25px 0;
+}
+
+.pagination.pagination-rounded-flat .page-item,
+.jsgrid .pagination-rounded-flat.jsgrid-pager .page-item,
+.pagination.pagination-rounded-flat
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-flat
+    .jsgrid-pager-nav-button,
+.jsgrid .pagination-rounded-flat.jsgrid-pager .jsgrid-pager-nav-button,
+.pagination.pagination-rounded-flat .jsgrid .jsgrid-pager .jsgrid-pager-page,
+.jsgrid .jsgrid-pager .pagination.pagination-rounded-flat .jsgrid-pager-page,
+.jsgrid .pagination-rounded-flat.jsgrid-pager .jsgrid-pager-page {
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+.pagination.pagination-rounded-flat .page-item .page-link,
+.jsgrid .pagination-rounded-flat.jsgrid-pager .page-item .page-link,
+.pagination.pagination-rounded-flat
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-flat
+    .jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .pagination-rounded-flat.jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-link,
+.pagination.pagination-rounded-flat
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-flat
+    .jsgrid-pager-page
+    .page-link,
+.jsgrid .pagination-rounded-flat.jsgrid-pager .jsgrid-pager-page .page-link,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination.pagination-rounded-flat
+    .page-item
+    a,
+.pagination.pagination-rounded-flat
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-flat
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid .pagination-rounded-flat.jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination.pagination-rounded-flat
+    .page-item
+    a,
+.pagination.pagination-rounded-flat .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination.pagination-rounded-flat .jsgrid-pager-page a,
+.jsgrid .pagination-rounded-flat.jsgrid-pager .jsgrid-pager-page a {
+    border: none;
+    border-radius: 50px;
+}
+
+.pagination.pagination-rounded-separated .page-item,
+.jsgrid .pagination-rounded-separated.jsgrid-pager .page-item,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button,
+.jsgrid .pagination-rounded-separated.jsgrid-pager .jsgrid-pager-nav-button,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page,
+.jsgrid .pagination-rounded-separated.jsgrid-pager .jsgrid-pager-page {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.pagination.pagination-rounded-separated .page-item:first-child,
+.jsgrid .pagination-rounded-separated.jsgrid-pager .page-item:first-child,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:first-child,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button:first-child,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button:first-child,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:first-child,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page:first-child,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page:first-child {
+    margin-left: 0;
+}
+
+.pagination.pagination-rounded-separated .page-item:first-child .page-link,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .page-item:first-child
+    .page-link,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    .page-link,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:first-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page:first-child
+    .page-link,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page:first-child
+    .page-link,
+.pagination.pagination-rounded-separated
+    .page-item:first-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination.pagination-rounded-separated
+    .page-item:first-child
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .page-item:first-child
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-item:first-child
+    a,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button:first-child
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button:first-child
+    a,
+.pagination.pagination-rounded-separated
+    .page-item:first-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination.pagination-rounded-separated
+    .page-item:first-child
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .page-item:first-child
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page
+    .page-item:first-child
+    a,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:first-child
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page:first-child
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page:first-child
+    a {
+    border-radius: 10px 0 0 10px;
+}
+
+.pagination.pagination-rounded-separated .page-item:last-child,
+.jsgrid .pagination-rounded-separated.jsgrid-pager .page-item:last-child,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:last-child,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button:last-child,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button:last-child,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:last-child,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page:last-child,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page:last-child {
+    margin-right: 0;
+}
+
+.pagination.pagination-rounded-separated .page-item:last-child .page-link,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .page-item:last-child
+    .page-link,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    .page-link,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:last-child
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page:last-child
+    .page-link,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page:last-child
+    .page-link,
+.pagination.pagination-rounded-separated
+    .page-item:last-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination.pagination-rounded-separated
+    .page-item:last-child
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .page-item:last-child
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-item:last-child
+    a,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button:last-child
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button:last-child
+    a,
+.pagination.pagination-rounded-separated
+    .page-item:last-child
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination.pagination-rounded-separated
+    .page-item:last-child
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .page-item:last-child
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page
+    .page-item:last-child
+    a,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page:last-child
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page:last-child
+    a,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page:last-child
+    a {
+    border-radius: 0 10px 10px 0;
+}
+
+.pagination.pagination-rounded-separated .page-item .page-link,
+.jsgrid .pagination-rounded-separated.jsgrid-pager .page-item .page-link,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-nav-button
+    .page-link,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page
+    .page-link,
+.jsgrid
+    .pagination-rounded-separated.jsgrid-pager
+    .jsgrid-pager-page
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination.pagination-rounded-separated
+    .page-item
+    a,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid .pagination-rounded-separated.jsgrid-pager .jsgrid-pager-nav-button a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination.pagination-rounded-separated
+    .page-item
+    a,
+.pagination.pagination-rounded-separated
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .pagination.pagination-rounded-separated
+    .jsgrid-pager-page
+    a,
+.jsgrid .pagination-rounded-separated.jsgrid-pager .jsgrid-pager-page a {
+    border-radius: 2px;
+}
+
+/* pagination variations */
+.pagination-primary .page-item.active .page-link,
+.pagination-primary
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-primary
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.pagination-primary .jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .pagination-primary .active.jsgrid-pager-page .page-link,
+.pagination-primary
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-primary
+    .page-item.active
+    a,
+.pagination-primary .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination-primary .active.jsgrid-pager-nav-button a,
+.pagination-primary
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination-primary
+    .page-item.active
+    a,
+.pagination-primary .jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination-primary .active.jsgrid-pager-page a {
+    background: #004200;
+    border-color: #004200;
+}
+
+.pagination-primary .page-item:hover .page-link,
+.pagination-primary
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-primary
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.pagination-primary .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.jsgrid .jsgrid-pager .pagination-primary .jsgrid-pager-page:hover .page-link,
+.pagination-primary
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-primary
+    .page-item:hover
+    a,
+.pagination-primary .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .pagination-primary .jsgrid-pager-nav-button:hover a,
+.pagination-primary .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-primary .page-item:hover a,
+.pagination-primary .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.jsgrid .jsgrid-pager .pagination-primary .jsgrid-pager-page:hover a {
+    background: #5957b8;
+    border-color: #004200;
+    color: #ffffff;
+}
+
+.pagination-secondary .page-item.active .page-link,
+.pagination-secondary
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-secondary
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.pagination-secondary
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-page
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-secondary
+    .active.jsgrid-pager-page
+    .page-link,
+.pagination-secondary
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-secondary
+    .page-item.active
+    a,
+.pagination-secondary .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination-secondary .active.jsgrid-pager-nav-button a,
+.pagination-secondary
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination-secondary
+    .page-item.active
+    a,
+.pagination-secondary .jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination-secondary .active.jsgrid-pager-page a {
+    background: #a3a4a5;
+    border-color: #a3a4a5;
+}
+
+.pagination-secondary .page-item:hover .page-link,
+.pagination-secondary
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-secondary
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.pagination-secondary .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.jsgrid .jsgrid-pager .pagination-secondary .jsgrid-pager-page:hover .page-link,
+.pagination-secondary
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-secondary
+    .page-item:hover
+    a,
+.pagination-secondary .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .pagination-secondary .jsgrid-pager-nav-button:hover a,
+.pagination-secondary
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination-secondary
+    .page-item:hover
+    a,
+.pagination-secondary .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.jsgrid .jsgrid-pager .pagination-secondary .jsgrid-pager-page:hover a {
+    background: #b0b1b2;
+    border-color: #a3a4a5;
+    color: #ffffff;
+}
+
+.pagination-success .page-item.active .page-link,
+.pagination-success
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-success
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.pagination-success .jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .pagination-success .active.jsgrid-pager-page .page-link,
+.pagination-success
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-success
+    .page-item.active
+    a,
+.pagination-success .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination-success .active.jsgrid-pager-nav-button a,
+.pagination-success
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination-success
+    .page-item.active
+    a,
+.pagination-success .jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination-success .active.jsgrid-pager-page a {
+    background: #57b657;
+    border-color: #57b657;
+}
+
+.pagination-success .page-item:hover .page-link,
+.pagination-success
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-success
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.pagination-success .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.jsgrid .jsgrid-pager .pagination-success .jsgrid-pager-page:hover .page-link,
+.pagination-success
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-success
+    .page-item:hover
+    a,
+.pagination-success .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .pagination-success .jsgrid-pager-nav-button:hover a,
+.pagination-success .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-success .page-item:hover a,
+.pagination-success .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.jsgrid .jsgrid-pager .pagination-success .jsgrid-pager-page:hover a {
+    background: #69be69;
+    border-color: #57b657;
+    color: #ffffff;
+}
+
+.pagination-info .page-item.active .page-link,
+.pagination-info
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-info
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.pagination-info .jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .pagination-info .active.jsgrid-pager-page .page-link,
+.pagination-info
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-info
+    .page-item.active
+    a,
+.pagination-info .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination-info .active.jsgrid-pager-nav-button a,
+.pagination-info .page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-info .page-item.active a,
+.pagination-info .jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination-info .active.jsgrid-pager-page a {
+    background: #248afd;
+    border-color: #248afd;
+}
+
+.pagination-info .page-item:hover .page-link,
+.pagination-info
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-info
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.pagination-info .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.jsgrid .jsgrid-pager .pagination-info .jsgrid-pager-page:hover .page-link,
+.pagination-info
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-info
+    .page-item:hover
+    a,
+.pagination-info .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .pagination-info .jsgrid-pager-nav-button:hover a,
+.pagination-info .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-info .page-item:hover a,
+.pagination-info .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.jsgrid .jsgrid-pager .pagination-info .jsgrid-pager-page:hover a {
+    background: #3d98fd;
+    border-color: #248afd;
+    color: #ffffff;
+}
+
+.pagination-warning .page-item.active .page-link,
+.pagination-warning
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-warning
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.pagination-warning .jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .pagination-warning .active.jsgrid-pager-page .page-link,
+.pagination-warning
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-warning
+    .page-item.active
+    a,
+.pagination-warning .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination-warning .active.jsgrid-pager-nav-button a,
+.pagination-warning
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-page
+    .pagination-warning
+    .page-item.active
+    a,
+.pagination-warning .jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination-warning .active.jsgrid-pager-page a {
+    background: #ffc100;
+    border-color: #ffc100;
+}
+
+.pagination-warning .page-item:hover .page-link,
+.pagination-warning
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-warning
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.pagination-warning .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.jsgrid .jsgrid-pager .pagination-warning .jsgrid-pager-page:hover .page-link,
+.pagination-warning
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-warning
+    .page-item:hover
+    a,
+.pagination-warning .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .pagination-warning .jsgrid-pager-nav-button:hover a,
+.pagination-warning .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-warning .page-item:hover a,
+.pagination-warning .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.jsgrid .jsgrid-pager .pagination-warning .jsgrid-pager-page:hover a {
+    background: #ffc71a;
+    border-color: #ffc100;
+    color: #ffffff;
+}
+
+.pagination-danger .page-item.active .page-link,
+.pagination-danger
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-danger
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.pagination-danger .jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .pagination-danger .active.jsgrid-pager-page .page-link,
+.pagination-danger
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-danger
+    .page-item.active
+    a,
+.pagination-danger .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination-danger .active.jsgrid-pager-nav-button a,
+.pagination-danger .page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-danger .page-item.active a,
+.pagination-danger .jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination-danger .active.jsgrid-pager-page a {
+    background: #ff4747;
+    border-color: #ff4747;
+}
+
+.pagination-danger .page-item:hover .page-link,
+.pagination-danger
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-danger
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.pagination-danger .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.jsgrid .jsgrid-pager .pagination-danger .jsgrid-pager-page:hover .page-link,
+.pagination-danger
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-danger
+    .page-item:hover
+    a,
+.pagination-danger .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .pagination-danger .jsgrid-pager-nav-button:hover a,
+.pagination-danger .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-danger .page-item:hover a,
+.pagination-danger .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.jsgrid .jsgrid-pager .pagination-danger .jsgrid-pager-page:hover a {
+    background: #ff6161;
+    border-color: #ff4747;
+    color: #ffffff;
+}
+
+.pagination-light .page-item.active .page-link,
+.pagination-light
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-light
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.pagination-light .jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .pagination-light .active.jsgrid-pager-page .page-link,
+.pagination-light
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-light
+    .page-item.active
+    a,
+.pagination-light .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination-light .active.jsgrid-pager-nav-button a,
+.pagination-light .page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-light .page-item.active a,
+.pagination-light .jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination-light .active.jsgrid-pager-page a {
+    background: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+.pagination-light .page-item:hover .page-link,
+.pagination-light
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-light
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.pagination-light .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.jsgrid .jsgrid-pager .pagination-light .jsgrid-pager-page:hover .page-link,
+.pagination-light
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-light
+    .page-item:hover
+    a,
+.pagination-light .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .pagination-light .jsgrid-pager-nav-button:hover a,
+.pagination-light .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-light .page-item:hover a,
+.pagination-light .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.jsgrid .jsgrid-pager .pagination-light .jsgrid-pager-page:hover a {
+    background: white;
+    border-color: #f8f9fa;
+    color: #ffffff;
+}
+
+.pagination-dark .page-item.active .page-link,
+.pagination-dark
+    .jsgrid
+    .jsgrid-pager
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-dark
+    .active.jsgrid-pager-nav-button
+    .page-link,
+.pagination-dark .jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link,
+.jsgrid .jsgrid-pager .pagination-dark .active.jsgrid-pager-page .page-link,
+.pagination-dark
+    .page-item.active
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-dark
+    .page-item.active
+    a,
+.pagination-dark .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
+.jsgrid .jsgrid-pager .pagination-dark .active.jsgrid-pager-nav-button a,
+.pagination-dark .page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-dark .page-item.active a,
+.pagination-dark .jsgrid .jsgrid-pager .active.jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .pagination-dark .active.jsgrid-pager-page a {
+    background: #282f3a;
+    border-color: #282f3a;
+}
+
+.pagination-dark .page-item:hover .page-link,
+.pagination-dark
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.jsgrid
+    .jsgrid-pager
+    .pagination-dark
+    .jsgrid-pager-nav-button:hover
+    .page-link,
+.pagination-dark .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link,
+.jsgrid .jsgrid-pager .pagination-dark .jsgrid-pager-page:hover .page-link,
+.pagination-dark
+    .page-item:hover
+    .jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    a,
+.jsgrid
+    .jsgrid-pager
+    .jsgrid-pager-nav-button
+    .pagination-dark
+    .page-item:hover
+    a,
+.pagination-dark .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .pagination-dark .jsgrid-pager-nav-button:hover a,
+.pagination-dark .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
+.jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-dark .page-item:hover a,
+.pagination-dark .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a,
+.jsgrid .jsgrid-pager .pagination-dark .jsgrid-pager-page:hover a {
+    background: #323b49;
+    border-color: #282f3a;
+    color: #ffffff;
+}
+
+/* Action button */
+
+.action-btn {
+    width: 90px;
+    padding: 5px 0px;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.action-btn:hover {
+    text-decoration: none;
+}
+
+/* Badge */
+
+.badge {
+    width: 70px;
+    padding: 4px 0px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    display: inline-block;
+}
