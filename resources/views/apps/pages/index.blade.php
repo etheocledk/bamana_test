@@ -156,7 +156,7 @@
     <!-- Modal pour modifier le produit -->
     <div id="editProductModal"
         class="fixed inset-0 bg-black/60 z-[999] flex h-full w-full bg-opacity-50 hidden justify-center items-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+        <div class="bg-white p-6 rounded-lg lg:w-1/3 md:2/4 sm:3/4">
             <h2 class="text-2xl font-semibold mb-4">Modifier le produit</h2>
             <form id="editProductForm" action="{{ route('products.update') }}" method="POST"
                 enctype="multipart/form-data">
