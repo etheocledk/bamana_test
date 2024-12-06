@@ -70,8 +70,16 @@
                                     @if (auth()->user()->role == 'admin')
                                         <td>
                                             <div class="flex items-center flex-wrap gap-2 w-full">
-                                                <a href="" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600">Modifier</a>
-
+                                                <button
+                                                    class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600"
+                                                    data-id="{{ $product->id }}" data-name="{{ $product->name }}"
+                                                    data-description="{{ $product->description }}"
+                                                    data-price="{{ $product->price }}"
+                                                    data-quantity="{{ $product->quantity }}"
+                                                    data-image="{{ $product->image_path }}"
+                                                    onclick="openUpdateModal(this)">
+                                                    Modifier
+                                                </button>
                                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST"
                                                     id="deleteProductForm" class="d-inline">
                                                     @csrf
@@ -145,6 +153,59 @@
         </div>
     </div>
 
+    <!-- Modal pour modifier le produit -->
+    <div id="editProductModal"
+        class="fixed inset-0 bg-black/60 z-[999] flex h-full w-full bg-opacity-50 hidden justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+            <h2 class="text-2xl font-semibold mb-4">Modifier le produit</h2>
+            <form id="editProductForm" action="{{ route('products.update') }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" id="productId" name="product_id">
+
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nom</label>
+                    <input type="text" id="productName" name="name"
+                        class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea id="productDescription" name="description"
+                        class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label for="price" class="block text-sm font-medium text-gray-700">Prix</label>
+                    <input type="number" id="productPrice" name="price"
+                        class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="quantity" class="block text-sm font-medium text-gray-700">Quantité</label>
+                    <input type="number" id="productQuantity" name="quantity"
+                        class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                    <input type="file" id="productImage" name="image"
+                        class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div class="flex justify-between">
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-white py-2 px-4 rounded"
+                        onclick="closeModal()">Annuler</button>
+                    <button type="submit" class="bg-[#003169] hover:bg-blue-600 text-white py-2 px-4 rounded">Mettre à
+                        jour</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Modal de confirmation de suppression -->
     @include('shared.modals.delete')
 
@@ -156,5 +217,30 @@
         function closeModal() {
             document.getElementById("addProductModal").classList.add("hidden");
         }
+
+        function openUpdateModal(button) {
+            var modal = document.getElementById('editProductModal');
+            var productId = button.getAttribute('data-id');
+            var productName = button.getAttribute('data-name');
+            var productDescription = button.getAttribute('data-description');
+            var productPrice = button.getAttribute('data-price');
+            var productQuantity = button.getAttribute('data-quantity');
+            var productImage = button.getAttribute('data-image');
+
+            document.getElementById('productId').value = productId;
+            document.getElementById('productName').value = productName;
+            document.getElementById('productDescription').value = productDescription;
+            document.getElementById('productPrice').value = productPrice;
+            document.getElementById('productQuantity').value = productQuantity;
+            document.getElementById('productImage').value = '';
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeUpdateModal() {
+            var modal = document.getElementById('editProductModal');
+            modal.classList.add('hidden');
+        }
     </script>
+
 @endsection
