@@ -79,7 +79,7 @@ Une fois le serveur démarré, ouvre ton navigateur et accède à l'application 
 http://127.0.0.1:8000
 ```
 
-###8. Connexion à l'interface utilisateur
+### 8. Connexion à l'interface utilisateur
 
 Utilisateur : Un utilisateur peut naviguer dans les produits et les afficher. Il peut aussi filtrer les produits par nom.
 Admin : L'administrateur peut ajouter, modifier et supprimer des produits.Il peut aussi filtrer les produits par nom.
