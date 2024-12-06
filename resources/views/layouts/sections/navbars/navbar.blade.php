@@ -1,5 +1,5 @@
 <header style="z-index:500">
-    <nav class="fixed top-0 left-0 right-0 z-50">
+    <nav class="fixed top-0 left-0 right-0">
         <div class="flex items-center justify-between w-full first-child-nav py-4"
             style="box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03); background-color:rgba(255, 255, 255, 0.97);">
 
