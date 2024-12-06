@@ -2,6 +2,12 @@
 
 Bienvenue dans le projet Laravel 10 ! Ce projet inclut un système simple de CRUD pour gérer des produits avec des fonctionnalités d'ajout, de modification, de suppression et de filtrage.
 
+## Capture d'écran
+
+Voici une capture d'écran de l'application en cours d'exécution :
+
+![Capture d'écran du projet](assets/images/screenshot.png)
+
 ## Prérequis
 
 Avant de commencer, voici les outils et logiciels nécessaires :
