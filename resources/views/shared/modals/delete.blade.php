@@ -1,4 +1,4 @@
-<div id="deleteAccountModal" class="fixed inset-0 bg-black/60 z-[999] hidden overflow-y-auto">
+<div id="deleteProductModal" class="fixed inset-0 bg-black/60 z-[999] hidden overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4">
         <div class="panel border-0 py-1 px-4 rounded-lg overflow-hidden w-[450px] my-8 bg-white">
             <div class="flex mt-5 items-center justify-center">
@@ -13,37 +13,35 @@
                 </span>
             </div>
             <div class="p-5 text-center">
-                <p class="text-lg">Voulez-vous vraiment supprimer le compte ?</p>
-                <p class="text-xs pt-4" style="color: #dc3545">Cette action entrainera une perte de toutes vos
-                    données y compris vos commandes en cours.</p>
+                <p class="text-lg">Voulez-vous vraiment supprimer ce produit ?</p>
                 <div class="flex justify-center gap-6 items-center mt-8">
                     <button type="button"
                         style="color: #dc3545; background-color: transparent; border: 1px solid #dc3545;
                      padding: 0.375rem 1.75rem; border-radius: 0.25rem;
                      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;"
-                        onclick="closeAccountModal()">Annuler</button>
+                        onclick="closeProductModal()">Annuler</button>
 
                     <button type="button" class="btn" style="background-color: #dc3545; color: white;"
-                        onclick="confirmAccountDelete()">Supprimer</button>
+                        onclick="confirmProductDelete()">Supprimer</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    function closeAccountModal() {
-        document.getElementById('deleteAccountModal').classList.add('hidden');
+    function closeProductModal() {
+        document.getElementById('deleteProductModal').classList.add('hidden');
     }
 
-    function confirmAccountDelete() {
-        deleteAccountForm = document.getElementById('deleteAccountForm');
+    function confirmProductDelete() {
+        deleteProductForm = document.getElementById('deleteProductForm');
 
-        if (deleteAccountForm) {
-            deleteAccountForm.submit();
+        if (deleteProductForm) {
+            deleteProductForm.submit();
         }
     }
 
-    function deleteAccountAlert() {
-        document.getElementById('deleteAccountModal').classList.remove('hidden');
+    function deleteProductAlert() {
+        document.getElementById('deleteProductModal').classList.remove('hidden');
     }
 </script>

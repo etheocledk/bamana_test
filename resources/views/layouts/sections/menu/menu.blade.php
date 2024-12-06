@@ -52,8 +52,5 @@
             padding: 15px 20px;
         }
 
-        .book-container-flex {
-            justify-content: center;
-        }
     }
 </style>

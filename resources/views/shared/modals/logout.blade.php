@@ -38,7 +38,6 @@
         if (logoutForm) {
             logoutForm.submit();
         }
-        //window.location.href = '/auth-logout';
     }
 
     function logoutAlert() {

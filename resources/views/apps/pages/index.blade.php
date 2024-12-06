@@ -54,15 +54,10 @@
                                     <td>{{ $product->quantity }}</td>
                                     @if (auth()->user()->role == 'admin')
                                         <td class="flex items-center flex-wrap gap-2">
-                                            <a href="{{ route('products.edit', $product->id) }}"
-                                                class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600">
-                                                Modifier
-                                            </a>
-                                            <form action="{{ route('products.destroy', $product->id) }}" method="POST"
+                                            <form action="{{ route('products.destroy', $product->id) }}" method="POST" id="deleteProductForm"
                                                 class="d-inline">
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
+                                                <button  onclick="deleteProductAlert()" type="button"
                                                     class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700">
                                                     Supprimer
                                                 </button>
@@ -87,4 +82,5 @@
             </div>
         </div>
     </div>
+    @include('shared.modals.delete')
 @endsection

@@ -34,24 +34,8 @@ Route::middleware(['roleCheck:admin,customer'])->group(function () {
 });
 
 
-// Route pour afficher le formulaire de création d'un produit (create)
-Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
-
-// Route pour enregistrer un produit dans la base de données (store)
-Route::post('products', [ProductController::class, 'store'])->name('products.store');
-
-// Route pour afficher le formulaire d'édition d'un produit (edit)
-Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-
-// Route pour mettre à jour un produit (update)
-Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
-
-// Route pour supprimer un produit (destroy)
-Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
-
-
 Route::middleware(['roleCheck:admin'])->group(function () {
-
+    Route::post('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
 
 /*
